@@ -1,31 +1,31 @@
-import React from 'react';
-import { Tabs } from 'expo-router';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-import { colors } from '@/styles/colors';
-import { TransactionsIcon } from '@/assets/icons/TransactionsIcon';
-import { ReportsIcon } from '@/assets/icons/ReportsIcon';
 import { BalanceIcon } from '@/assets/icons/BalanceIcon';
 import { MenuIcon } from '@/assets/icons/MenuIcon';
 import { RecordIcon } from '@/assets/icons/RecordIcon';
+import { ReportsIcon } from '@/assets/icons/ReportsIcon';
+import { TransactionsIcon } from '@/assets/icons/TransactionsIcon';
+import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { colors } from '@/styles/colors';
+import { Tabs } from 'expo-router';
+import React from 'react';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        // headerStatusBarHeight: 96,
-        tabBarStyle: { height: 60 },
+        tabBarStyle: { height: 96 },
         tabBarActiveTintColor: colors['blue-voice'][200],
         tabBarInactiveTintColor: colors['black-voice'],
+        tabBarItemStyle: { marginBottom: 38 },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
-        tabBarItemStyle: { marginBottom: 6 }
+        headerStyle: { height: 103, backgroundColor: colors['blue-voice'][600] },
+        headerTitleStyle: { color: "#fff" },
       }}>
       <Tabs.Screen
         name="transactions"
         options={{
           title: 'Transações',
-          
           tabBarIcon: ({color}) => <TransactionsIcon color={color} />,
         }}
       />
@@ -39,7 +39,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          // tabBarStyle: {paddingBottom: 4},
+          headerShown: false,
+          tabBarLabelStyle: { opacity: 0 },
           tabBarIcon: () => <RecordIcon />,
         }}
       />

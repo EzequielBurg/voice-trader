@@ -1,0 +1,23 @@
+{
+    "editor.codeActionsOnSave": {
+      "source.formatDocument": "explicit",
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit",
+      "source.addMissingImports": "explicit"
+    },
+    "tailwindCSS.experimental.classRegex": [
+      ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ],
+  
+    "editor.fontFamily": "Fira Code Retina",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "300",
+    "editor.fontSize": 13.5,
+  
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs":"active",
+  
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
+  }
+  
