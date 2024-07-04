@@ -1,3 +1,4 @@
+import { SessionProvider } from '@/hooks/useSession';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -44,9 +45,16 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      {/* <Stack.Screen name="auth" options={{ presentation: 'card' }} /> */}
-    </Stack>
+    <SessionProvider>
+      <Stack>
+        <Stack.Screen
+          name="(public)/sign-in"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      </Stack>
+    </SessionProvider>
   );
 }
+  // https://medium.com/@fredrik.burmester/bottom-tab-navigation-in-expo-router-3-sdk-50-with-authentication-b8d4529b2e0f#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjY3MTk2NzgzNTFhNWZhZWRjMmU3MDI3NGJiZWE2MmRhMmE4YzRhMTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTY1MTcxMzY3MTI4MDI1NzM1MTAiLCJlbWFpbCI6ImV6ZXF1aWVsZ29uY2FsdmVzNzY1OTVAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5iZiI6MTcxNzAxNTkzNywibmFtZSI6IkV6ZXF1aWVsIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0pXcENDUi05SlZPUzdLb2RhcmxpWmNkT3MyVzVtYmdHc0ptYUJobF9TRnppaXhYUVE9czk2LWMiLCJnaXZlbl9uYW1lIjoiRXplcXVpZWwiLCJpYXQiOjE3MTcwMTYyMzcsImV4cCI6MTcxNzAxOTgzNywianRpIjoiNzIxYmIxMTZmODhiZTAwNDg3ZWRlZmRkMTVlYjE3ZmY0ODhlYjgxNSJ9.XTBJfGCQ2g-Qalch5UJFnODF0GEH9jUPX5abW_TcB94y-NBzJGyPwhuLbKwpBfJpvJXCIuXpH_Ul-ycaA0HFKynaoIJIhjoKSKmkFS08tC4kJ_yYbIzBum5_cw3gH5kqYtDJqoBdYGlAp4uCz23XDrDHx8Hltk-TFCjBrvJyPUL5hNySjnvCnViA1EyUZZRCAYbHALdK6w47QD5r9aBDl0WmnrQUVw9gZakw_DrZTESFnFJQrY75AKL01R4UGfvujWBa1vVjs_tnE0a7j79NrWGve4nj2RctGDVLYppu1SOam9DEwsxxTM8hqraEWDUXFoY4H4G1piu0lUUqiDfAiw
+  // https://github.com/fredrikburmester/expo-router-3-tab-example-with-auth/blob/main/app/_layout.tsx
