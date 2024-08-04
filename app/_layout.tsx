@@ -47,11 +47,11 @@ function RootLayoutNav() {
   return (
     <SessionProvider>
       <Stack>
+        <Stack.Screen name="(auth)/(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
           name="(public)/sign-in"
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
       </Stack>
     </SessionProvider>
   );
