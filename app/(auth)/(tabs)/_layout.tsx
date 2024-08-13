@@ -4,7 +4,7 @@ import { MenuIcon } from '@/assets/icons/MenuIcon';
 import { RecordIcon } from '@/assets/icons/RecordIcon';
 import { ReportsIcon } from '@/assets/icons/ReportsIcon';
 import { TransactionsIcon } from '@/assets/icons/TransactionsIcon';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { useClientOnlyValue } from '@/hooks/useClientOnlyValue';
 import { useSession } from '@/hooks/useSession';
 import { colors } from '@/styles/colors';
 import { Redirect, Tabs, router } from 'expo-router';
@@ -27,24 +27,26 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarStyle: { height: 92 },
+        tabBarStyle: { height: 92, shadowColor: colors['black-voice'], elevation:40, position: 'absolute', shadowOffset: { width:0,height:60 } },
         tabBarActiveTintColor: colors['blue-voice'][200],
         tabBarInactiveTintColor: colors['black-voice'],
         tabBarItemStyle: { marginBottom: 38 },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
-        headerStyle: { height: 103, backgroundColor: colors['blue-voice'][600]},
+        headerStyle: { height: 103, backgroundColor: colors['blue-voice'][600] },
         headerLeft: () => (
-          <TouchableOpacity onPress={handleBackNavigation}>
+          <TouchableOpacity className='ml-4' onPress={handleBackNavigation}>
             <BackArrow />
           </TouchableOpacity>
         ),
-        headerTitleStyle: { color: "#fff", textAlign: 'center' },
+        headerTitleStyle: { color: "#fff" },
+        headerTitleAlign: 'center'
       }}>
       <Tabs.Screen
         name="transactions"
         options={{
+          headerTitle: 'Minhas transações',
           title: 'Transações',
           tabBarIcon: ({color}) => <TransactionsIcon color={color} />,
         }}
@@ -52,6 +54,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="reports"
         options={{
+          headerTitle: 'Meus relatórios',
           title: 'Relatórios',
           tabBarIcon: ({ color }) => <ReportsIcon color={color} />,
         }}

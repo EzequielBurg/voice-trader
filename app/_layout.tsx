@@ -52,6 +52,10 @@ function RootLayoutNav() {
           name="(public)/sign-in"
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name='record-transacion-modal'
+          options={{ presentation: 'fullScreenModal', headerShown: false }}
+        />
       </Stack>
     </SessionProvider>
   );
