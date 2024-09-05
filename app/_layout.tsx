@@ -53,8 +53,12 @@ function RootLayoutNav() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name='record-transacion-modal'
-          options={{ presentation: 'fullScreenModal', headerShown: false }}
+          name='(auth)/recording-mode-modal'
+          options={{ presentation: 'transparentModal', headerShown: false, animation: 'fade', animationTypeForReplace: 'push' }}
+        />
+        <Stack.Screen
+          name='(auth)/guided-recording-modal'
+          options={{ presentation: 'containedModal', headerShown: false, animation: 'fade', animationTypeForReplace: 'push' }}
         />
       </Stack>
     </SessionProvider>

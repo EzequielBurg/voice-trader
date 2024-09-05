@@ -8,7 +8,6 @@ import { useClientOnlyValue } from '@/hooks/useClientOnlyValue';
 import { useSession } from '@/hooks/useSession';
 import { colors } from '@/styles/colors';
 import { Redirect, Tabs, router } from 'expo-router';
-import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
 export default function TabLayout() {
@@ -27,7 +26,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarStyle: { height: 92, shadowColor: colors['black-voice'], elevation:40, position: 'absolute', shadowOffset: { width:0,height:60 } },
+        tabBarStyle: { height: 92, shadowColor: colors['black-voice'], elevation: 40, position: 'absolute', shadowOffset: { width: 0,height: 60 } },
         tabBarActiveTintColor: colors['blue-voice'][200],
         tabBarInactiveTintColor: colors['black-voice'],
         tabBarItemStyle: { marginBottom: 38 },

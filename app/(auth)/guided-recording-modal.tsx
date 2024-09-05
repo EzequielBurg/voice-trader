@@ -4,7 +4,7 @@ import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { router } from 'expo-router';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-export default function ModalScreen() {
+export default function GuidedRecordingModalScreen() {
   function handleBackNavigation() {
     router.back()
   }

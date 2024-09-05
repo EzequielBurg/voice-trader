@@ -20,7 +20,7 @@ export default function VoiceScreen() {
 
         <View className='h-full gap-10 mt-[30%] items-center'>
           <Text className="text-white text-3xl mb-5 font-semibold">Olá!</Text>
-          <Link href="/record-transacion-modal">
+          <Link href="/(auth)/guided-recording-modal">
             <RecordLargeIcon />
           </Link>
           <Text className="text-white text-3xl max-w-64 font-semibold flex-1 flex-row text-center">
