@@ -1,7 +1,9 @@
 import { CloseIcon } from '@/assets/icons/CloseIcon';
 import { PulsingRecordLargeIcon } from '@/assets/icons/PulsingRecordLargeIcon';
+import { Input } from '@/components/Input';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { router } from 'expo-router';
+import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function GuidedRecordingModalScreen() {
@@ -25,6 +27,8 @@ export default function GuidedRecordingModalScreen() {
         </TouchableOpacity>
 
         <View className='flex flex-col h-full flex-1 gap-3'>
+          <Input placeholder='Digite aqui' />
+
           <Text className='text-black-voice text-lg'>Pergunta 1</Text>
           <Text className='text-black-voice text-lg'>Pergunta 2</Text>
           <Text className='text-black-voice text-lg'>Pergunta 2</Text>
