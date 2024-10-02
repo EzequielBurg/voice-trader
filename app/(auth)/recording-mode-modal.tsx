@@ -1,13 +1,16 @@
-import { Link, router } from 'expo-router';
+import { Link, router, usePathname } from 'expo-router';
 import { GestureResponderEvent, Text, View } from 'react-native';
 
 export default function RecordingModeModalScreen() {
   function handleDismiss(e: GestureResponderEvent) {
-    console.log('here')
     e.preventDefault();
     e.stopPropagation()
     router.back();
   }
+
+  const path = usePathname()
+
+  console.log('path', path)
 
   return (
     <View className='relative h-full w-full'>
@@ -17,10 +20,10 @@ export default function RecordingModeModalScreen() {
         <Link href='/(auth)/guided-recording-modal' className='py-2 px-4 w-full border-2 border-blue-voice-600 rounded-md'>
           <Text className='text-blue-voice-600 text-base font-semibold'>Ativar Gravação Guiada</Text>
         </Link>
-        <Link href='/(auth)/guided-recording-modal' className='py-2 px-4 w-full border-2 border-blue-voice-600 rounded-md'>
+        <Link href='/(auth)/free-recording-modal' className='py-2 px-4 w-full border-2 border-blue-voice-600 rounded-md'>
           <Text className='text-blue-voice-600 font-semibold text-base'>Ativar Gravação Livre</Text>
         </Link>
-        <Link href='/(auth)/(tabs)/reports' className='py-2 px-4 w-full border-2 border-blue-voice-600 rounded-md'>
+        <Link href='/(auth)/typed-recording-modal' className='py-2 px-4 w-full border-2 border-blue-voice-600 rounded-md'>
           <Text className='text-blue-voice-600 font-semibold text-base'>Ativar Digitação</Text>
         </Link>
       </View>

@@ -1,6 +1,5 @@
 import { CloseIcon } from '@/assets/icons/CloseIcon';
 import { PulsingRecordLargeIcon } from '@/assets/icons/PulsingRecordLargeIcon';
-import { Input } from '@/components/Input';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { router } from 'expo-router';
 import React from 'react';
@@ -21,19 +20,21 @@ export default function GuidedRecordingModalScreen() {
         </TouchableOpacity>
       </View>
 
-      <View className='h-full gap-10 mt-[30%] items-center'>
+      <View className='h-full gap-8 mt-[30%] items-center'>
         <TouchableOpacity>
           <PulsingRecordLargeIcon />
         </TouchableOpacity>
 
-        <View className='flex flex-col h-full flex-1 gap-3'>
-          <Input placeholder='Digite aqui' />
-
-          <Text className='text-black-voice text-lg'>Pergunta 1</Text>
-          <Text className='text-black-voice text-lg'>Pergunta 2</Text>
-          <Text className='text-black-voice text-lg'>Pergunta 2</Text>
-          <Text className='text-black-voice text-lg'>Pergunta 2</Text>
-          <Text className='text-black-voice text-lg'>Pergunta 2</Text>
+        <View className='flex flex-col h-full px-1.5 flex-1 gap-3'>
+          <Text className='text-black-voice text-lg font-semibold'>Será uma compra ou uma venda?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Para quem será destinado?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Qual é o produto?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Há alguma especificação. Se sim, qual?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Qual a quantidade?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Qual o valor unitário?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Qual o valor total?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Qual a forma de pagamento?</Text>
+          <Text className='text-black-voice text-lg font-semibold'>Há alguma observação a ser feita? Se sim, qual?</Text>
         </View>
 
       </View>

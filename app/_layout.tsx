@@ -21,7 +21,8 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    Inter: require('../assets/fonts/Inter_24pt-Regular.ttf'),
+    InterSemibold: require('../assets/fonts/Inter_24pt-SemiBold.ttf'),
     ...FontAwesome.font,
   });
 
@@ -58,6 +59,14 @@ function RootLayoutNav() {
         />
         <Stack.Screen
           name='(auth)/guided-recording-modal'
+          options={{ presentation: 'containedModal', headerShown: false, animation: 'fade', animationTypeForReplace: 'push' }}
+        />
+        <Stack.Screen
+          name='(auth)/free-recording-modal'
+          options={{ presentation: 'containedModal', headerShown: false, animation: 'fade', animationTypeForReplace: 'push' }}
+        />
+        <Stack.Screen
+          name='(auth)/typed-recording-modal'
           options={{ presentation: 'containedModal', headerShown: false, animation: 'fade', animationTypeForReplace: 'push' }}
         />
       </Stack>

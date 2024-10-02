@@ -26,20 +26,20 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarStyle: { height: 92, shadowColor: colors['black-voice'], elevation: 40, position: 'absolute', shadowOffset: { width: 0,height: 60 } },
+        tabBarStyle: { height: 92, shadowColor: colors['black-voice'], elevation: 40, position: 'absolute', shadowOffset: { width: 0, height: 60 } },
         tabBarActiveTintColor: colors['blue-voice'][200],
         tabBarInactiveTintColor: colors['black-voice'],
         tabBarItemStyle: { marginBottom: 38 },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
-        headerStyle: { height: 103, backgroundColor: colors['blue-voice'][600] },
+        headerStyle: { height: 105, backgroundColor: colors['blue-voice'][600] },
         headerLeft: () => (
           <TouchableOpacity className='ml-4' onPress={handleBackNavigation}>
             <BackArrow />
           </TouchableOpacity>
         ),
-        headerTitleStyle: { color: "#fff" },
+        headerTitleStyle: { color: "#fff", fontWeight: '800' },
         headerTitleAlign: 'center'
       }}>
       <Tabs.Screen
