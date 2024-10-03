@@ -1,12 +1,36 @@
 import { RecordShortIcon } from "@/assets/icons/RecordShortIcon";
 import clsx from "clsx";
-import { Link, useSegments } from 'expo-router';
+import { Link, usePathname, useSegments } from 'expo-router';
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
 export function RecordModeSelector() {
   const segments = useSegments()
 
+  const [currMode, setCurrMode] = useState('Gravação Guiada')
+
   const notWhite = (segments[1]?.includes('guided') || segments[1]?.includes('typed'))
+
+  const path = usePathname()
+
+  const mode = path.split('/').at(1)?.split('-').at(0)
+
+  useEffect(() => {
+    switch (mode) {
+      case 'guided':
+        setCurrMode('Gravação Guiada')
+        break;
+      case 'free':
+        setCurrMode('Gravação Livre')
+        break;
+      case 'typed':
+        setCurrMode('Digitação')
+        break;
+      default:
+        setCurrMode('Gravação Guiada')
+        break;
+    }
+  }, [mode])
 
   return (
     <>
@@ -17,7 +41,7 @@ export function RecordModeSelector() {
           </View>
           <View>
             <Text className={clsx("font-semibold text-base", { "text-blue-voice-200": notWhite, "text-white": !notWhite })}>
-              Gravação Guiada Ativa
+              {currMode} Ativa
             </Text>
             <Text className={clsx("text-sm", { "text-black-voice": notWhite, "text-white": !notWhite })}>
               Clique para alterar

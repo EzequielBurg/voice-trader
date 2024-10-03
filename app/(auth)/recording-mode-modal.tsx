@@ -1,4 +1,4 @@
-import { Link, router, usePathname } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { GestureResponderEvent, Text, View } from 'react-native';
 
 export default function RecordingModeModalScreen() {
@@ -7,10 +7,6 @@ export default function RecordingModeModalScreen() {
     e.stopPropagation()
     router.back();
   }
-
-  const path = usePathname()
-
-  console.log('path', path)
 
   return (
     <View className='relative h-full w-full'>
