@@ -13,7 +13,7 @@ export default function TypedRecordingModalScreen() {
           <RecordModeSelector />
           <CloseAnyRecordingModal />
         </View>
-        <View className='flex flex-col my-[10%] w-full px-1.5 flex-1 gap-3'>
+        <View className='flex flex-col my-[12%] w-full px-1.5 flex-1 gap-3'>
           <Input placeholder='Será uma compra ou uma venda?' />
           <Input placeholder='Para quem será destinado?' />
           <Input placeholder='Qual é o produto?'/>
