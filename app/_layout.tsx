@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import "../styles/global.css";
 
 export {
@@ -47,6 +48,7 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <SessionProvider>
+      <StatusBar backgroundColor='transparent' barStyle='dark-content' translucent />
       <Stack>
         <Stack.Screen name="(auth)/(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
