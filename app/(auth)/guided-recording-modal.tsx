@@ -3,10 +3,27 @@ import { CloseAnyRecordingModal } from '@/components/CloseAnyRecordingModal';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { colors } from '@/styles/colors';
 import { MaterialIcons } from '@expo/vector-icons';
-import React from 'react';
+import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
+import React, { useEffect } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function GuidedRecordingModalScreen() {
+
+  useEffect(() => {
+    Audio.requestPermissionsAsync()
+      .then(({granted}) => {
+        if (granted) {
+          Audio.setAudioModeAsync({
+            allowsRecordingIOS: true,
+            interruptionModeIOS: InterruptionModeIOS.DoNotMix,
+            playsInSilentModeIOS: true,
+            interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
+            playThroughEarpieceAndroid: true
+          })
+        }
+      })
+  }, [])
+
   return (
     <View className='flex-1 py-28 px-6 h-screen items-center bg-white'>
       <View className="flex-row justify-between w-full items-center">
@@ -14,7 +31,7 @@ export default function GuidedRecordingModalScreen() {
         <CloseAnyRecordingModal />
       </View>
 
-      <View className='h-full gap-8 mt-[20%] items-center'>
+      <View className='h-full gap-8 mt-20 items-center'>
         <TouchableOpacity>
           <PulsingRecordLargeIcon />
         </TouchableOpacity>

@@ -7,13 +7,13 @@ import { ScrollView, View } from 'react-native';
 
 export default function TypedRecordingModalScreen() {
   return (
-    <View className='flex-1 py-28 px-6 h-screen items-center bg-white'>
+    <View className='flex-1 pt-28 px-6 h-screen items-center bg-white'>
       <ScrollView showsVerticalScrollIndicator={false} className='h-screen'>
         <View className="flex-row justify-between w-full items-center">
           <RecordModeSelector />
           <CloseAnyRecordingModal />
         </View>
-        <View className='flex flex-col my-[12%] w-full px-1.5 flex-1 gap-3'>
+        <View className='flex flex-col my-20 w-full px-1.5 flex-1 gap-3'>
           <Input placeholder='Será uma compra ou uma venda?' />
           <Input placeholder='Para quem será destinado?' />
           <Input placeholder='Qual é o produto?'/>
