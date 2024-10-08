@@ -1,11 +1,28 @@
 import { RecordLargeIcon } from '@/assets/icons/RecordLargeIcon';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { Feather } from '@expo/vector-icons';
+import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from 'expo-router';
+import { useEffect } from 'react';
 import { Text, View } from "react-native";
 
 export default function VoiceScreen() {
+  useEffect(() => {
+    Audio.requestPermissionsAsync()
+      .then(({granted}) => {
+        if (granted) {
+          Audio.setAudioModeAsync({
+            allowsRecordingIOS: true,
+            interruptionModeIOS: InterruptionModeIOS.DoNotMix,
+            playsInSilentModeIOS: true,
+            interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
+            playThroughEarpieceAndroid: true
+          })
+        }
+      })
+  }, [])
+
   return (
     <LinearGradient
       colors={['#0067E5', '#4D95ED']}

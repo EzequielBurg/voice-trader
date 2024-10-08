@@ -1,9 +1,8 @@
-import { RecordLargeIcon } from '@/assets/icons/RecordLargeIcon';
 import { CloseAnyRecordingModal } from '@/components/CloseAnyRecordingModal';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { LinearGradient } from "expo-linear-gradient";
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 
 export default function FreeRecordingModalScreen() {
   return (
@@ -20,9 +19,9 @@ export default function FreeRecordingModalScreen() {
 
         <View className='h-full gap-10 mt-[30%] items-center'>
           <Text className="text-white text-3xl mb-5 font-semibold">Olá!</Text>
-          <TouchableOpacity>
-            <RecordLargeIcon />
-          </TouchableOpacity>
+            <Pressable>
+              <Image source={require('../../assets/images/VoiceRecordingBlue.gif')} height={200} width={200} />
+            </Pressable>
           <Text className="text-white text-3xl max-w-64 font-semibold flex-1 flex-row text-center">
             Toque para gravar e transcrever
           </Text>

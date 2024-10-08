@@ -1,27 +1,44 @@
-import { PulsingRecordLargeIcon } from '@/assets/icons/PulsingRecordLargeIcon';
+// import { PulsingRecordLargeIcon } from '@/assets/icons/PulsingRecordLargeIcon';
 import { CloseAnyRecordingModal } from '@/components/CloseAnyRecordingModal';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { colors } from '@/styles/colors';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
-import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Audio } from 'expo-av';
+import React, { useEffect, useState } from 'react';
+import { Alert, Image, Pressable, Text, View } from 'react-native';
 
 export default function GuidedRecordingModalScreen() {
+  const [recording, setRecording] = useState<Audio.Recording | null>(null)
+
+  async function handleReordingStart() {
+    const { granted } = await Audio.getPermissionsAsync()
+
+    if (granted) {
+      try {
+        // const { recording } = await Audio.Recording.createAsync()
+        // setRecording(recording)
+      } catch (error) {
+        console.log(error)
+        Alert.alert('Erro ao gravar a transação', 'Não foi possível iniciar a gravação do áudio')
+      }
+    }
+  }
+
+  async function handleRecordingStop() {
+    try {
+      if (recording) {
+        await recording.stopAndUnloadAsync()
+        const fileUri = recording.getURI()
+        console.log('file', fileUri)
+      }
+    } catch (error) {
+      console.log(error)
+        Alert.alert('Erro ao gravar a transação', 'Não foi possível iniciar a gravação do áudio')
+    }
+  }
 
   useEffect(() => {
-    Audio.requestPermissionsAsync()
-      .then(({granted}) => {
-        if (granted) {
-          Audio.setAudioModeAsync({
-            allowsRecordingIOS: true,
-            interruptionModeIOS: InterruptionModeIOS.DoNotMix,
-            playsInSilentModeIOS: true,
-            interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
-            playThroughEarpieceAndroid: true
-          })
-        }
-      })
+    handleReordingStart()
   }, [])
 
   return (
@@ -31,12 +48,13 @@ export default function GuidedRecordingModalScreen() {
         <CloseAnyRecordingModal />
       </View>
 
-      <View className='h-full gap-8 mt-20 items-center'>
-        <TouchableOpacity>
-          <PulsingRecordLargeIcon />
-        </TouchableOpacity>
+      <View className='h-full mt-20 items-center'>
+        <Pressable onPress={handleRecordingStop}>
+          <Image source={require('../../assets/images/VoiceRecordingWhite.gif')} height={200} width={200} />
+        </Pressable>
+        <Text className='text-blue-voice-600 text-xl'>Toque para parar a gravação.</Text>
 
-        <View className='flex flex-col h-full px-1.5 flex-1 gap-3 items-center'>
+        <View className='flex flex-col mt-8 h-full px-1.5 flex-1 gap-3 items-center'>
           <View className='flex-row items-center gap-2'>
             <MaterialIcons name='tips-and-updates' size={20} color={colors['blue-voice'][600]} />
             <Text className='text-black-voice text-lg'>Será uma compra ou uma venda?</Text>
