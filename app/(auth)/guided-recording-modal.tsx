@@ -1,4 +1,3 @@
-// import { PulsingRecordLargeIcon } from '@/assets/icons/PulsingRecordLargeIcon';
 import { CloseAnyRecordingModal } from '@/components/CloseAnyRecordingModal';
 import { RecordModeSelector } from '@/components/RecordModeSelector';
 import { colors } from '@/styles/colors';

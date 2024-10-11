@@ -8,7 +8,7 @@ import { useClientOnlyValue } from '@/hooks/useClientOnlyValue';
 import { useSession } from '@/hooks/useSession';
 import { colors } from '@/styles/colors';
 import { Redirect, Tabs, router } from 'expo-router';
-import { TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function TabLayout() {
   const { auth } = useSession();
@@ -25,8 +25,9 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      sceneContainerStyle={{ backgroundColor: '#fff' }}
       screenOptions={{
-        tabBarStyle: { height: 92, shadowColor: colors['black-voice'], elevation: 40, position: 'absolute', shadowOffset: { width: 0, height: 60 } },
+        tabBarStyle: { height: 92, backgroundColor: colors['gray-voice'][100] },
         tabBarActiveTintColor: colors['blue-voice'][200],
         tabBarInactiveTintColor: colors['black-voice'],
         tabBarItemStyle: { marginBottom: 38 },
@@ -40,7 +41,7 @@ export default function TabLayout() {
           </TouchableOpacity>
         ),
         headerTitleStyle: { color: "#fff", fontWeight: '800' },
-        headerTitleAlign: 'center'
+        headerTitleAlign: 'center',
       }}>
       <Tabs.Screen
         name="transactions"
@@ -83,3 +84,15 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  shadow: {
+      // shadowColor: "#000",
+      shadowOpacity: 0.9,
+      shadowRadius: 4.65,
+      height: 92,
+      backgroundColor: '#fff',
+      position: 'absolute',
+      elevation: 60,
+  }
+})

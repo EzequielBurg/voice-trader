@@ -10,4 +10,3 @@ export const colors = {
       800: "#424242"
     },
   }
-  
